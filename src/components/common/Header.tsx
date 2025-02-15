@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 const TopNav = styled.nav`
@@ -18,22 +19,41 @@ const IconBtn = styled.button`
   }
 `;
 
-function Header() {
-  return (
-    <TopNav>
-      <IconBtn>
-        <img src={'/assets/icons/ico-list.svg'} alt="List" />
-      </IconBtn>
+type HeaderProps = {
+  type?: string;
+};
 
-      <IconBtn>
-        <img src={'/assets/icons/ico-profile.svg'} alt="Mypage" />
-      </IconBtn>
+function Header({ type }: HeaderProps) {
+  const navigate = useNavigate();
 
-      {/* <IconBtn>
-        <img src={'/assets/icons/ico-left-arrow.svg'} alt="Back" />
-      </IconBtn> */}
-    </TopNav>
-  );
+  const renderNavButtons = () => {
+    switch (type) {
+      case 'page':
+        return (
+          <IconBtn onClick={() => navigate(-1)}>
+            <img src={'/assets/icons/ico-left-arrow.svg'} alt="Back" />
+          </IconBtn>
+        );
+      case 'default':
+      default:
+        return (
+          <>
+            <IconBtn>
+              <Link to={'/list'}>
+                <img src={'/assets/icons/ico-list.svg'} alt="List" />
+              </Link>
+            </IconBtn>
+            <IconBtn>
+              <Link to={'/'}>
+                <img src={'/assets/icons/ico-profile.svg'} alt="Mypage" />
+              </Link>
+            </IconBtn>
+          </>
+        );
+    }
+  };
+
+  return <TopNav>{renderNavButtons()}</TopNav>;
 }
 
 export default Header;

@@ -26,6 +26,8 @@ export const GlobalStyle = createGlobalStyle`
 
   --red-color: #FF3B30;
   --red-color-light: #FF7870;
+
+  --default-border-radius: 12px;
 }
 
 /* global style */
@@ -43,10 +45,18 @@ html {
   min-height: 100vh;
   font-size: 16px;
   line-height: 1.3em;
-  word-spacing: -0.2em;
+  word-spacing: -0.02em;
 
   background-color: var(--gray-color-50);
   color: var(--black-color);
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100%;
 }
 
 h1 {
@@ -73,24 +83,32 @@ h3 {
   line-height: 1.2em;
 }
 
-.body1 {
+.body1, p {
   font-size: 1rem;
   font-weight: 400;
+  line-height: 1.3em;
 }
 
 .body2 {
   font-size: 0.94rem;
   font-weight: 400;
+  line-height: 1.3em;
 }
 
 .body3 {
   font-size: 0.875rem;
   font-weight: 400;
+  line-height: 1.3em;
 }
 
 .caption {
   font-size: 0.75rem;
   font-weight: 400;
+  line-height: 1.3em;
+}
+
+.desc-text {
+  color: var(--gray-color-500);
 }
 
 

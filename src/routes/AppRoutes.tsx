@@ -1,7 +1,9 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router';
 import MainLayout from 'layouts/MainLayout';
-import Home from 'pages/Home.page';
+import HomePage from 'pages/Home.page';
+import DiaryListPage from 'pages/DiaryList.page';
+import PageLayout from 'layouts/PageLayout';
 
 const AppRouter = createBrowserRouter([
   {
@@ -10,7 +12,17 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: '',
-        Component: Home,
+        Component: HomePage,
+      },
+    ],
+  },
+  {
+    path: '/',
+    Component: PageLayout,
+    children: [
+      {
+        path: '/list',
+        Component: DiaryListPage,
       },
     ],
   },

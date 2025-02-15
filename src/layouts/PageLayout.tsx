@@ -5,14 +5,14 @@ import { Outlet } from 'react-router';
 import styled from 'styled-components';
 
 const RootBody = styled.div`
-  /* padding: 20px; */
+  padding: 20px;
   min-height: 100%;
 `;
 
-function MainLayout() {
+function PageLayout() {
   return (
     <>
-      <Header />
+      <Header type="page" />
       <RootBody>
         <Outlet />
       </RootBody>
@@ -20,4 +20,4 @@ function MainLayout() {
   );
 }
 
-export default MainLayout;
+export default PageLayout;
