@@ -1,6 +1,10 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router';
-import styled from 'styled-components';
+import React from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import styled from "styled-components";
+
+import icoLeftArrowUrl from "../../assets/icons/ico-left-arrow.svg";
+import icoListUrl from "../../assets/icons/ico-list.svg";
+import icoProfileUrl from "../../assets/icons/ico-profile.svg";
 
 const TopNav = styled.nav`
   display: flex;
@@ -28,25 +32,25 @@ function Header({ type }: HeaderProps) {
 
   const renderNavButtons = () => {
     switch (type) {
-      case 'page':
+      case "page":
         return (
           <IconBtn onClick={() => navigate(-1)}>
-            <img src={'/assets/icons/ico-left-arrow.svg'} alt="Back" />
+            <img src={icoLeftArrowUrl} alt="Back" />
           </IconBtn>
         );
-      case 'default':
+      case "default":
       default:
         return (
           <>
             <IconBtn>
-              <Link to={'/list'}>
-                <img src={'/assets/icons/ico-list.svg'} alt="List" />
-              </Link>
+              <NavLink to={"/list"}>
+                <img src={icoListUrl} alt="List" />
+              </NavLink>
             </IconBtn>
             <IconBtn>
-              <Link to={'/'}>
-                <img src={'/assets/icons/ico-profile.svg'} alt="Mypage" />
-              </Link>
+              <NavLink to={"/"}>
+                <img src={icoProfileUrl} alt="Mypage" />
+              </NavLink>
             </IconBtn>
           </>
         );

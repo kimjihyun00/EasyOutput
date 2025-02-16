@@ -1,6 +1,6 @@
-import IconBadge from 'components/common/IconBadge';
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import IconBadge from "../components/common/IconBadge";
 
 const CalSection = styled.section`
   background-color: var(--white-color);
