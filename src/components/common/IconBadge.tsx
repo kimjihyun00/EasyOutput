@@ -1,5 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+
+import icoThreeStarsUrl from "../../assets/icons/ico-three-stars.svg";
 
 const IconBadgeStyle = styled.div`
   display: flex;
@@ -37,14 +39,14 @@ const IconBadgeStyle = styled.div`
 `;
 
 type IconBadgeProps = {
-  color?: 'white' | 'primary';
+  color?: "white" | "primary";
 };
 
 function IconBadge(props: IconBadgeProps) {
   return (
     <>
-      <IconBadgeStyle className={`badge ${props.color || ''}`}>
-        <img src={'/assets/icons/ico-three-stars.svg'} alt="List" />
+      <IconBadgeStyle className={`badge ${props.color || ""}`}>
+        <img src={icoThreeStarsUrl} alt="List" />
         <p className="body3">AI checked</p>
       </IconBadgeStyle>
     </>

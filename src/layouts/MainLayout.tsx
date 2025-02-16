@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Header from 'components/common/Header';
-import { Outlet } from 'react-router';
-import styled from 'styled-components';
+import { Outlet } from "react-router";
+import styled from "styled-components";
+import Header from "../components/common/Header";
 
 const RootBody = styled.div`
   /* padding: 20px; */

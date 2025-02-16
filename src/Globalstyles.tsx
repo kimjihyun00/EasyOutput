@@ -1,5 +1,5 @@
-import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import React from "react";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -46,9 +46,9 @@ html {
   font-size: 16px;
   line-height: 1.3em;
   word-spacing: -0.02em;
-
   background-color: var(--gray-color-50);
   color: var(--black-color);
+  font-weight: 400;
 }
 
 body {
@@ -160,6 +160,13 @@ button {
   display: inline-block; /* 레이아웃 깨짐 방지 */
   cursor: pointer; /* 클릭 가능하도록 설정 */
   height: auto;
+}
+
+a {
+  all: unset; /* 기본 스타일 제거 */
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 부모 요소의 색상 상속 */
+  cursor: pointer; /* 클릭 가능하도록 설정 */
 }
 
 `;

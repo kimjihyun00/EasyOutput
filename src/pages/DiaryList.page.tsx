@@ -1,6 +1,7 @@
-import IconBadge from 'components/common/IconBadge';
-import React from 'react';
-import { styled } from 'styled-components';
+import React from "react";
+import { Link } from "react-router";
+import { styled } from "styled-components";
+import IconBadge from "../components/common/IconBadge";
 
 const DiaryList = styled.ul`
   display: flex;
@@ -38,11 +39,13 @@ function DiaryListPage() {
       <DiaryList>
         <MonthlyHeading className="subtitle">January</MonthlyHeading>
         <DiaryListItem>
-          <IconBadge color="primary" />
-          <h2 className="body1 title">
-            Here is where the title of the journal should be. ournal should be.
-          </h2>
-          <p className="caption desc-text">2025.01.05 Thu</p>
+          <Link to="/diary/1">
+            <IconBadge color="primary" />
+            <h2 className="body1 title">
+              Here is where the title of the journal should be. ournal should
+            </h2>
+            <p className="caption desc-text">2025.01.05 Thu</p>
+          </Link>
         </DiaryListItem>
       </DiaryList>
     </>
