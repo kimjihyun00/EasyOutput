@@ -10,12 +10,14 @@ const DiaryList = styled.ul`
 `;
 
 const DiaryListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px 16px;
   background-color: var(--white-color);
   border-radius: var(--default-border-radius);
+  padding: 12px 16px;
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 
   .title {
     overflow: hidden;

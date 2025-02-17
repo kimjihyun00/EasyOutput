@@ -7,6 +7,8 @@ import Header from "../components/common/Header";
 const RootBody = styled.div`
   /* padding: 20px; */
   min-height: 100%;
+  margin: 0 auto;
+  margin-bottom: 3.75rem;
 `;
 
 function MainLayout() {

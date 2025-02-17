@@ -111,6 +111,10 @@ h3 {
   color: var(--gray-color-500);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 
 `;
 
@@ -167,6 +171,31 @@ a {
   text-decoration: none; /* 밑줄 제거 */
   color: inherit; /* 부모 요소의 색상 상속 */
   cursor: pointer; /* 클릭 가능하도록 설정 */
+}
+
+textarea {
+  all: unset; /* 모든 기본 스타일 제거 */
+  width: 100%; /* 기본 크기 조정 가능 */
+  height: auto; /* 높이 자동 조정 */
+  resize: none; /* 크기 조정 방지 (원하는 경우 조정 가능) */
+
+  &::placeholder {
+    color: var(--gray-color-500);
+    font-weight: 300;
+  }
+}
+
+textarea::placeholder {
+
+}
+
+input[type=\"text\"] {
+  all: unset; /* 모든 기본 스타일 제거 */
+  width: 100%; /* 기본 크기 조정 가능 */
+  display: block; /* 인라인 속성 제거 */
+  &::placeholder {
+    color: var(--gray-color-500);
+  }
 }
 
 `;

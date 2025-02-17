@@ -5,6 +5,7 @@ import HomePage from "../pages/Home.page";
 import PageLayout from "../layouts/PageLayout";
 import DiaryListPage from "../pages/DiaryList.page";
 import DiaryViewPage from "../pages/DiaryView.page";
+import DiaryWritePage from "../pages/DiaryWrite.page";
 
 const AppRouter = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const AppRouter = createBrowserRouter([
       {
         path: "/list",
         Component: DiaryListPage,
+      },
+      {
+        path: "/diary/write",
+        Component: DiaryWritePage,
       },
       {
         path: "/diary/:diaryId",
