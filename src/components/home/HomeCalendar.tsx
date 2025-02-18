@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
   startOfMonth,
@@ -9,6 +9,7 @@ import {
   format,
   isSameDay,
   isToday,
+  isEqual,
 } from 'date-fns';
 
 const CalendarWrap = styled.div`
@@ -42,8 +43,10 @@ const WeekDay = styled.div<{
 
 const Day = styled.div<{
   $selected?: boolean;
-  $empty?: boolean;
+  $hasDiary?: boolean;
+  $visibility?: boolean;
 }>`
+  cursor: pointer;
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
@@ -51,11 +54,12 @@ const Day = styled.div<{
   background-color: ${(props) =>
     props.$selected
       ? 'var(--red-color-light)'
-      : props.$empty
-      ? 'transparent'
-      : 'var(--primary-color-50)'};
+      : props.$hasDiary
+      ? 'var(--primary-color-50)'
+      : 'transparent'};
   border: ${(props) =>
-    props.$empty ? '1px dashed var(--gray-color-100)' : 'none'};
+    props.$hasDiary ? 'none' : '1px dashed var(--gray-color-100)'};
+  visibility: ${({ $visibility }) => ($visibility ? 'visible' : 'hidden')};
 `;
 
 const HomeCalendar: React.FC = () => {
@@ -74,6 +78,30 @@ const HomeCalendar: React.FC = () => {
     end: lastDayOfCalendar,
   });
 
+  useEffect(() => {
+    console.log('today:', today);
+    console.log('days:', days);
+  }, []);
+
+  const [selectedDate, setSelectedDate]: [Date, any] = useState(today);
+
+  const renderDay = (day: Date) => {
+    let isThisMonth: boolean = day.getMonth() === month;
+
+    return (
+      <Day
+        className={'body1'}
+        key={day.toString()} // 키 값
+        $visibility={isThisMonth} // 이번달 날짜가 아님
+        $selected={isSameDay(selectedDate, day)} // 선택됨
+        $hasDiary={false} // 작성된 일기가 있음
+        onClick={() => setSelectedDate(day)}
+      >
+        {isThisMonth ? format(day, 'd') : ''}
+      </Day>
+    );
+  };
+
   return (
     <CalendarWrap>
       <CalendarHeader>
@@ -86,16 +114,7 @@ const HomeCalendar: React.FC = () => {
             {day}
           </WeekDay>
         ))}
-        {days.map((day) => (
-          <Day
-            className="body1"
-            key={day.toString()}
-            $selected={isToday(day)}
-            $empty={!isToday(day)}
-          >
-            {day.getMonth() === month ? format(day, 'd') : ''}
-          </Day>
-        ))}
+        {days.map((day) => renderDay(day))}
       </CalendarContainer>
     </CalendarWrap>
   );

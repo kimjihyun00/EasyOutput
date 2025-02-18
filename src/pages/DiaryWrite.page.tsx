@@ -27,6 +27,8 @@ const DiaryWriteCard = styled(DefaultCardStyle)`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-width: 335px;
+
   textarea {
     min-height: 100px;
     height: auto;
@@ -90,21 +92,21 @@ function DiaryWritePage() {
           <DefaultCardStyle>
             <IconBtn>
               <IcoCircleCheckOutline />
-              <p className="body1">save</p>
+              <p className="body1">저장하기</p>
             </IconBtn>
           </DefaultCardStyle>
 
           <DefaultCardStyle>
             <IconBtn>
               <IcoEditNote />
-              <p className="body1">save</p>
+              <p className="body1">수정하기</p>
             </IconBtn>
           </DefaultCardStyle>
 
           <DefaultCardStyle>
             <IconBtn>
               <IcoThreeStars />
-              <p className="body1">correct by AI</p>
+              <p className="body1">AI에게 첨삭 받기</p>
             </IconBtn>
           </DefaultCardStyle>
         </DiaryWriteBtnGroup>
