@@ -1,5 +1,5 @@
-import React from "react";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -28,10 +28,24 @@ export const GlobalStyle = createGlobalStyle`
   --red-color-light: #FF7870;
 
   --default-border-radius: 12px;
+
+
+
+  /* swiper */
+  --swiper-pagination-color: var(--gray-color-700);
+  --swiper-pagination-bullet-size: 0.4rem;
+  --swiper-pagination-bullet-width: 0.4rem;
+  --swiper-pagination-bullet-height: 0.4rem;
+  --swiper-pagination-bullet-inactive-color: #000;
+  --swiper-pagination-bullet-inactive-opacity: 0.2;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 4px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
 }
 
 /* global style */
 * {
+  box-sizing: border-box;
 font-family: "Pretendard Variable", 
   Pretendard, -apple-system, BlinkMacSystemFont, 
   system-ui, Roboto, "Helvetica Neue", "Segoe UI", 

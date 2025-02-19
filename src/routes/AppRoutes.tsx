@@ -1,37 +1,49 @@
-import React from "react";
-import { createBrowserRouter } from "react-router";
-import MainLayout from "../layouts/MainLayout";
-import HomePage from "../pages/Home.page";
-import PageLayout from "../layouts/PageLayout";
-import DiaryListPage from "../pages/DiaryList.page";
-import DiaryViewPage from "../pages/DiaryView.page";
-import DiaryWritePage from "../pages/DiaryWrite.page";
+import React from 'react';
+import { createBrowserRouter } from 'react-router';
+import MainLayout from '../layouts/MainLayout';
+import HomePage from '../pages/Home.page';
+import PageLayout from '../layouts/PageLayout';
+import DiaryListPage from '../pages/DiaryList.page';
+import DiaryViewPage from '../pages/DiaryView.page';
+import DiaryWritePage from '../pages/DiaryWrite.page';
+import PlainLayout from '../layouts/PlainLayout';
+import LoginPage from '../pages/Login.page';
 
 const AppRouter = createBrowserRouter([
   {
-    path: "/",
+    path: '/login',
+    Component: PlainLayout,
+    children: [
+      {
+        path: '',
+        Component: LoginPage,
+      },
+    ],
+  },
+  {
+    path: '/',
     Component: MainLayout,
     children: [
       {
-        path: "",
+        path: '',
         Component: HomePage,
       },
     ],
   },
   {
-    path: "/",
+    path: '/',
     Component: PageLayout,
     children: [
       {
-        path: "/list",
+        path: '/list',
         Component: DiaryListPage,
       },
       {
-        path: "/diary/write",
+        path: '/diary/write',
         Component: DiaryWritePage,
       },
       {
-        path: "/diary/:diaryId",
+        path: '/diary/:diaryId',
         Component: DiaryViewPage,
       },
     ],

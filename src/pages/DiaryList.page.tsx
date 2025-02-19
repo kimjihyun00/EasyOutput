@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router";
-import { styled } from "styled-components";
-import IconBadge from "../components/common/IconBadge";
+import React from 'react';
+import { Link } from 'react-router';
+import { styled } from 'styled-components';
+import { AiCheckedBadge } from '../components/common/DefinedBadges';
 
 const DiaryList = styled.ul`
   display: flex;
@@ -41,8 +41,8 @@ function DiaryListPage() {
       <DiaryList>
         <MonthlyHeading className="subtitle">January</MonthlyHeading>
         <DiaryListItem>
-          <Link to="/diary/1">
-            <IconBadge color="primary" />
+          <Link to="/diary/1" state={{ corrected: false }}>
+            <AiCheckedBadge />
             <h2 className="body1 title">
               Here is where the title of the journal should be. ournal should
             </h2>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import {
   startOfMonth,
@@ -8,9 +8,8 @@ import {
   eachDayOfInterval,
   format,
   isSameDay,
-  isToday,
-  isEqual,
 } from 'date-fns';
+import Badge from '../common/Badge';
 
 const CalendarWrap = styled.div`
   margin: 0 auto;
@@ -62,31 +61,39 @@ const Day = styled.div<{
   visibility: ${({ $visibility }) => ($visibility ? 'visible' : 'hidden')};
 `;
 
-const HomeCalendar: React.FC = () => {
-  const today = new Date();
+const HomeCalendar: React.FC<{
+  selectedDate: Date;
+  setSelectedDate: any;
+}> = ({ selectedDate, setSelectedDate }) => {
+  const startMonth = +format(selectedDate, 'M') - 1;
 
-  const year = +format(today, 'yyyy');
-  const month = +format(today, 'M') - 1;
-
-  const firstDayOfMonth = startOfMonth(today);
+  const firstDayOfMonth = startOfMonth(selectedDate);
   const lastDayOfMonth = endOfMonth(firstDayOfMonth);
   const firstDayOfCalendar = startOfWeek(firstDayOfMonth);
   const lastDayOfCalendar = endOfWeek(lastDayOfMonth);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleOpenPicker = () => {
+    if (inputRef.current) {
+      inputRef.current.showPicker(); // 최신 브라우저에서 사용 가능
+    }
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('> pick', event.target.value);
+    setSelectedDate(event.target.value);
+  };
 
   const days = eachDayOfInterval({
     start: firstDayOfCalendar,
     end: lastDayOfCalendar,
   });
 
-  useEffect(() => {
-    console.log('today:', today);
-    console.log('days:', days);
-  }, []);
-
-  const [selectedDate, setSelectedDate]: [Date, any] = useState(today);
+  useEffect(() => {}, []);
 
   const renderDay = (day: Date) => {
-    let isThisMonth: boolean = day.getMonth() === month;
+    let isThisMonth: boolean = day.getMonth() === startMonth;
 
     return (
       <Day
@@ -105,8 +112,20 @@ const HomeCalendar: React.FC = () => {
   return (
     <CalendarWrap>
       <CalendarHeader>
-        <p className="body3">{format(today, 'yyyy')}</p>
-        <h2>{format(today, 'MMMM')}</h2>
+        <label htmlFor="yearMonth" onClick={handleOpenPicker}>
+          <p className="body3">{format(selectedDate, 'yyyy')}</p>
+          <h2>{format(selectedDate, 'MMMM')}</h2>
+          <input
+            type="month"
+            id="yearMonth"
+            name="yearMonth"
+            ref={inputRef}
+            value={format(selectedDate, 'yyyy-MM')}
+            onChange={handleChange}
+            style={{ display: 'none' }}
+          />
+        </label>
+        {/* <Badge text={'오늘'} color="primary" /> */}
       </CalendarHeader>
       <CalendarContainer>
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day) => (

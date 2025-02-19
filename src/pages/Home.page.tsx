@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import { Link, useNavigate } from "react-router";
-import DiaryCard from "../components/home/DiaryCard";
-import HomeCalendar from "../components/home/HomeCalendar";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Link, useNavigate } from 'react-router';
+import DiaryCard from '../components/home/DiaryCard';
+import HomeCalendar from '../components/home/HomeCalendar';
+import { differenceInCalendarDays, format } from 'date-fns';
 
 const CalSection = styled.section`
   background-color: var(--white-color);
-  
 `;
 
 const DiaryListSection = styled.section`
@@ -20,20 +20,30 @@ const DiaryListSection = styled.section`
 
 const DiaryList = styled.ul``;
 
-
-
 function HomePage() {
-  const navigate = useNavigate();
+  const today = new Date();
+  const [selectedDate, setSelectedDate]: [Date, any] = useState(today);
+
+  useEffect(() => {}, []);
 
   return (
     <>
       <CalSection>
-        <HomeCalendar />
+        <HomeCalendar
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
       </CalSection>
 
       <DiaryListSection>
         <DiaryList>
-            <DiaryCard diaryId={null} title={""} date={"25.01.30 Thu"} preview={""} />
+          <DiaryCard
+            today={today}
+            date={selectedDate}
+            diaryId={null}
+            title={''}
+            preview={''}
+          />
         </DiaryList>
       </DiaryListSection>
     </>
